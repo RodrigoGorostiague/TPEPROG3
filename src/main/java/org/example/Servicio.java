@@ -16,7 +16,7 @@ public class Servicio {
         maquinas.add(new Maquina("M3", 4));
         maquinas.add(new Maquina("M4", 1));
 
-        int piezasObjetivo = 15;
+        int piezasObjetivo = 20;
 
         Backtracking bt = new Backtracking();
         List<Maquina> solucion = bt.back(maquinas, piezasObjetivo);

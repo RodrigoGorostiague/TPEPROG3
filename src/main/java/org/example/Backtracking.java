@@ -25,6 +25,7 @@ public class Backtracking {
             // Si es una solución válida, y es mejor (menos máquinas), la guardo
             if (mejorSolucion == null || maquinasActuales.size() < mejorSolucion.size()) {
                 mejorSolucion = new ArrayList<>(maquinasActuales);
+                return;
             }
             return;
         }
@@ -32,7 +33,10 @@ public class Backtracking {
         for (Maquina maquina : maquinas) {
             int piezas = maquina.getPiezas();
 
-            if (piezasCreadas + piezas <= piezasAConstruir) {
+            if (piezasCreadas + piezas <= piezasAConstruir ) {
+               if (mejorSolucion != null && maquinasActuales.size() + 1 >= mejorSolucion.size())
+                    continue;
+
                 maquinasActuales.add(maquina);
                 backSolucion(maquinas, piezasAConstruir, maquinasActuales, piezasCreadas + piezas);
                 maquinasActuales.remove(maquinasActuales.size() - 1); // backtrack

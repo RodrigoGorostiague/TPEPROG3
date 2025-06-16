@@ -13,6 +13,6 @@ public class Maquina implements Comparable<Maquina> {
     
     @Override
     public int compareTo(Maquina o) {
-        return this.nombre.compareTo(o.nombre);
+        return this.piezas - o.piezas;
     }
 }

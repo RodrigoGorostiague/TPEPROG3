@@ -14,7 +14,7 @@ public class Servicio {
 
         List<Maquina> maquinas = read.getMaquinas(); // las obtiene
 
-        int piezasObjetivo = 13;
+        int piezasObjetivo = read.getPiezasTotales();
 
         Backtracking bt = new Backtracking();
         //List<Maquina> solucion = bt.back(maquinas, piezasObjetivo);

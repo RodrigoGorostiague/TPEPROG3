@@ -10,7 +10,7 @@ import java.util.List;
 @Setter
 public class Greedy {
     private List<Maquina> mejorSolucion = null;
-    private int estadosGenerados = 0;
+    private int estadosGenerados;
 
     public List<Maquina> greedySolucion(List<Maquina> maquinas, int piezasAConstruir) {
         mejorSolucion = new ArrayList<Maquina>();

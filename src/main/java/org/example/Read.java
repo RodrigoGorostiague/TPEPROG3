@@ -46,14 +46,16 @@ public class Read {
 
         for (String[] line: lines) {
             // Cada linea es un arreglo de Strings, donde cada posicion guarda un elemento
+            if (line.length == 1){
+                piezasTotales = Integer.parseInt(line[0]);
+            } else {
             String nombre = line[0].trim();
             int piezas = Integer.parseInt(line[1].trim());
-            // cómo guardo estos datos??
-            // Aca instanciar lo que necesiten en base a los datos leidos
+
             if(this.maquinas != null)
                 this.maquinas.add(new Maquina(nombre, piezas));
+            }
         }
-
     }
 
     private ArrayList<String[]> readContent(String path) {
@@ -68,7 +70,7 @@ public class Read {
             String line = null;
             while ((line = bufferedReader.readLine()) != null) {
                 line = line.trim();
-                lines.add(line.split(";"));
+                lines.add(line.split(","));
             }
         } catch (Exception e) {
             e.printStackTrace();

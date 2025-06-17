@@ -1,38 +1,42 @@
 package org.example;
 
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.ArrayList;
 import java.util.List;
 
+@Getter
+@Setter
 public class Greedy {
-    private static List<Maquina> mejorSolucion = null;
-    private static int estadosGenerados = 0;
+    private List<Maquina> mejorSolucion = null;
+    private int estadosGenerados = 0;
 
-    public static List<Maquina> Greedy(List<Maquina> maquinas, int piezasAConstruir) {
+    public List<Maquina> greedySolucion(List<Maquina> maquinas, int piezasAConstruir) {
         mejorSolucion = new ArrayList<Maquina>();
         estadosGenerados = 0;
-        greedyPrivado(maquinas, piezasAConstruir);
-        return mejorSolucion;
+        return greedyPrivado(maquinas, piezasAConstruir);
     }
-    public static List<Maquina> greedyPrivado(List<Maquina> maquinas, int piezasAConstruir) {
+
+    private List<Maquina> greedyPrivado(List<Maquina> maquinas, int piezasAConstruir) {
         List<Maquina> solucion = new ArrayList<>();
 
         for (Maquina maquina : maquinas) {
+            estadosGenerados++;
             int piezasPorEncendido = maquina.getPiezas();
             int it = piezasAConstruir / piezasPorEncendido;
             for (int i = 0; i < it; i++) {
                 solucion.add(maquina);
                 piezasAConstruir -= piezasPorEncendido;
             }
-
             if (piezasAConstruir == 0) break;
         }
 
         if (piezasAConstruir == 0) {
-            return solucion;
+            mejorSolucion.addAll(solucion);
+            return mejorSolucion;
         } else {
             return null;
         }
     }
-
-
 }

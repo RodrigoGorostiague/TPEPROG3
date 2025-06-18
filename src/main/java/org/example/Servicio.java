@@ -9,10 +9,10 @@ import java.util.List;
 public class Servicio {
     public static void main(String[] args) throws IOException {
         //TODO obtencion de maquinas y piezas a contruir a travez de un archivo
-        Read read = new Read("C:\\Users\\USUARIO\\Desktop\\TPE prog 3\\TPEPROG3\\src\\main\\java\\org\\example\\maquinas.txt"); // carga el archivo
+        Read read = new Read("/home/rodaja/IdeaProjects/Prog3/TPEP3/src/main/java/org/example/maquinas.txt"); // carga el archivo
         read.cargarDesdeArchivo(); // carga las máquinas
 
-        List<Maquina> maquinas = read.getMaquinas(); // las obtiene
+        Fabrica maquinas = read.getFabrica(); // las obtiene
 
         int piezasObjetivo = read.getPiezasTotales();
 

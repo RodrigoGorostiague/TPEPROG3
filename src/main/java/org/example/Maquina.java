@@ -7,12 +7,12 @@ import lombok.Setter;
 @Getter
 @Setter
 @AllArgsConstructor
-public class Maquina implements Comparable<Maquina> {
+public class Maquina implements Comparable<Maquina>{
     private String nombre;
     private int piezas;
-    
+
     @Override
     public int compareTo(Maquina o) {
-        return this.piezas - o.piezas;
+        return Integer.compare(o.piezas, this.piezas);
     }
 }

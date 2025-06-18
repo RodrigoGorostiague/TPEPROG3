@@ -8,19 +8,18 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
 @Getter
 @Setter
 public class Read {
     private int piezasTotales;
-    private List<Maquina> maquinas;
+    private Fabrica fabrica;
     private String rutaArchivo;
 
     public Read(String rutaArchivo) throws IOException {
         this.rutaArchivo = rutaArchivo;
         cargarDesdeArchivo();
-        this.maquinas = new ArrayList<>();
+        this.fabrica = new Fabrica();
     }
 
     public void cargarDesdeArchivo() throws IOException {
@@ -52,8 +51,8 @@ public class Read {
             String nombre = line[0].trim();
             int piezas = Integer.parseInt(line[1].trim());
 
-            if(this.maquinas != null)
-                this.maquinas.add(new Maquina(nombre, piezas));
+            if(this.fabrica != null)
+                this.fabrica.add(new Maquina(nombre, piezas));
             }
         }
     }

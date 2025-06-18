@@ -23,26 +23,7 @@ public class Read {
     }
 
     public void cargarDesdeArchivo() throws IOException {
-        /*try (BufferedReader br = new BufferedReader(new FileReader(rutaArchivo))) {
-            String linea;
-
-            if ((linea = br.readLine()) != null) {
-                piezasTotales = Integer.parseInt(linea.trim());
-            }
-            while ((linea = br.readLine()) != null) {
-                String[] partes = linea.split(",");
-                if (partes.length == 2) {
-                    String nombre = partes[0].trim();
-                    int piezas = Integer.parseInt(partes[1].trim());
-                    maquinas.add(new Maquina(nombre, piezas));
-                }
-            }
-        }*/
-        // Obtengo una lista con las lineas del archivo
-        // lines.get(0) tiene la primer linea del archivo
-        // lines.get(1) tiene la segunda linea del archivo... y así
         ArrayList<String[]> lines = this.readContent(this.rutaArchivo);
-
         for (String[] line: lines) {
             // Cada linea es un arreglo de Strings, donde cada posicion guarda un elemento
             if (line.length == 1){

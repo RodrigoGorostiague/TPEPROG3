@@ -97,14 +97,6 @@ public class Backtracking {
             return;
         }
 
-        // Poda: calcular mínimo número de máquinas necesarias con la máquina más productiva
-        int piezasRestantes = piezasAConstruir - piezasCreadas;
-        int maxPiezasPorMaquina = maquinas.iterator().next().getPiezas(); // primera máquina, la de más piezas
-        int minMaquinasNecesarias = (int) Math.ceil((double) piezasRestantes / maxPiezasPorMaquina);
-        if (mejorSolucion != null && maquinasActuales.size() + minMaquinasNecesarias >= mejorSolucion.size()) {
-            return; // No puede mejorar la mejor solución actual
-        }
-
         List<Maquina> lista = maquinas.getMaquinas();
 
         for (int idx = start; idx < lista.size(); idx++) {

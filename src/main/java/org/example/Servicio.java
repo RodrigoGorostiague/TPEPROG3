@@ -9,19 +9,23 @@ import java.util.List;
 public class Servicio {
     public static void main(String[] args) throws IOException {
         //TODO obtencion de maquinas y piezas a contruir a travez de un archivo
-        Read read = new Read("/home/rodaja/IdeaProjects/Prog3/TPEP3/src/main/java/org/example/maquinas.txt"); // carga el archivo
+        Read read = new Read("C:\\Users\\USUARIO\\Desktop\\TPE prog 3\\TPEPROG3\\src\\main\\java\\org\\example\\maquinas.txt"); // carga el archivo
         read.cargarDesdeArchivo(); // carga las máquinas
 
         Fabrica maquinas = read.getFabrica(); // las obtiene
 
-        int piezasObjetivo = read.getPiezasTotales();
+        int piezasObjetivo = read.getPiezasTotales(); // obtiene piezas a construir
 
         Backtracking bt = new Backtracking();
-        //List<Maquina> solucion = bt.back(maquinas, piezasObjetivo);
-        Greedy greedy = new Greedy();
-        List<Maquina> solucion = greedy.greedySolucion(maquinas, piezasObjetivo);
+        backtracking(maquinas, piezasObjetivo, bt); // solucion backtracking
 
-        /*if (solucion != null) {
+        Greedy gr = new Greedy();
+        //greedy(maquinas, piezasObjetivo, gr); // solucion greedy
+    }
+
+    public static void backtracking(Fabrica maquinas, int piezasObjetivo, Backtracking bt) {
+        List<Maquina> solucion = bt.back(maquinas, piezasObjetivo);
+        if (solucion != null) {
             System.out.println("🔧 Solución obtenida: secuencia de máquinas:");
             int contadorPiezas = 0;
             for (Maquina m : solucion) {
@@ -35,8 +39,11 @@ public class Servicio {
             System.out.println("Costo (estados generados): " + bt.getEstadosGenerados());
         } else {
             System.out.println("❌ No se encontró una combinación válida.");
-        }*/
+        }
+    }
 
+    public static void greedy(Fabrica maquinas, int piezasObjetivo, Greedy greedy) {
+        List<Maquina> solucion = greedy.greedySolucion(maquinas, piezasObjetivo);
         if (solucion != null) {
             System.out.println("🔧 Solución obtenida: secuencia de máquinas:");
             int contadorPiezas = 0;

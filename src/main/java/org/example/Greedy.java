@@ -92,7 +92,6 @@ public class Greedy {
         List<Maquina> solucion = new ArrayList<>();
 
         for (Maquina maquina : maquinas) {
-            estadosGenerados++;
             int piezasPorEncendido = maquina.getPiezas();
 
             if (piezasPorEncendido > piezasAConstruir) continue;
@@ -101,6 +100,7 @@ public class Greedy {
             for (int i = 0; i < usos; i++) {
                 solucion.add(maquina);
                 piezasAConstruir -= piezasPorEncendido;
+                estadosGenerados++;
             }
 
             if (piezasAConstruir == 0) break;
